@@ -117,3 +117,58 @@ src/
 - pg: PostgreSQL client
 - dotenv: Environment variable management
 
+## API Response Examples
+
+### Successful Response
+```json
+{
+    "id": 1,
+    "title": "Task Title",
+    "description": "Task Description",
+    "due_date": "2024-03-20T00:00:00.000Z",
+    "status": "Pending",
+    "created_at": "2024-03-15T10:00:00.000Z",
+    "updated_at": "2024-03-15T10:00:00.000Z",
+    "completed_at": null
+}
+```
+
+### Error Response
+```json
+{
+    "error": "Title and description are required"
+}
+```
+
+## Input Validation
+
+- **Title**: Required, string
+- **Description**: Required, string
+- **due_date**: Optional, ISO 8601 date string. Defaults to 7 days from creation if not provided
+
+## Testing
+
+The project uses Jest and Supertest for testing. To run the tests:
+
+```bash
+# Run tests once
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+```
+
+### Test Environment Setup
+
+The tests use a separate test database. Make sure to set up the following environment variables for testing:
+
+```env
+TEST_DB_USER=your_test_db_user
+TEST_DB_HOST=your_test_db_host
+TEST_DB_NAME=tasks_test
+TEST_DB_PASSWORD=your_test_db_password
+TEST_DB_PORT=5432
+```
+
+If test-specific environment variables are not set, the tests will fall back to using the main database configuration.
+
