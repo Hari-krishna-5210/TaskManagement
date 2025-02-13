@@ -117,6 +117,11 @@ src/
 - pg: PostgreSQL client
 - dotenv: Environment variable management
 
+### Dev Dependencies
+
+- jest: Testing framework
+- supertest: HTTP testing library
+
 ## API Response Examples
 
 ### Successful Response
@@ -160,8 +165,14 @@ npm run test:watch
 
 ### Test Environment Setup
 
-The tests use a separate test database. Make sure to set up the following environment variables for testing:
+The tests use a separate test database. Follow these steps to set up the test environment:
 
+1. Create a test database in PostgreSQL:
+```sql
+CREATE DATABASE tasks_test;
+```
+
+2. Set up the following environment variables for testing:
 ```env
 TEST_DB_USER=your_test_db_user
 TEST_DB_HOST=your_test_db_host
@@ -171,4 +182,6 @@ TEST_DB_PORT=5432
 ```
 
 If test-specific environment variables are not set, the tests will fall back to using the main database configuration.
+
+> **Note**: Make sure you have created the `tasks_test` database before running the tests. The test setup will automatically create the required tables in this database.
 
